@@ -1,0 +1,10 @@
+Looking at the bar chart, speculate on why you think some sort algorithms are
+faster than others and provide rationale as to your thought process.
+
+  We saw in the last exercise that algorithms that employ recursion are
+  especially hard on computer resources and time. In addition, nested loops
+  (loops within loops) increase the time complexity as well. I imagine that
+  is what we will be learning next.
+
+  Heap Sort is a great example of a time complex algorithm, where every sort
+  requires a multitude of adjustments (heapify).

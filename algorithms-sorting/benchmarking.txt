@@ -1,0 +1,10 @@
+result = Benchmark.measure {
+  heapsort(x)
+}
+#<Benchmark::Tms:0x007fdbc804e0b0 @label="", @real=0.0004760000156238675, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.0, @total=0.0>
+
+
+require_relative 'bubblesort'
+result = Benchmark.measure {
+  bubblesort(x)
+}
