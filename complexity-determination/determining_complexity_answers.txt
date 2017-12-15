@@ -1,0 +1,160 @@
+1) What's the Big-O of the following algorithm?
+
+  def goodbye_world(n)
+   puts "Goodbye World! #{n}"
+  end
+
+  ***Big-O notation of the above is O(1) constant. It takes the same amount
+  of time to complete the above code regardless of the size of n.
+
+
+2) What's the Big-O of the following algorithm? Submit your work and
+  reasoning with your solution.
+
+  def find_largest(collection)
+   largest = collection[0]
+   collection.length.times do |i|
+     if collection[i] >= largest
+       largest = collection[i]
+     end
+   end
+   largest
+  end
+
+  ***Big-O notation of the above code is linear. For the code to complete
+  it must run through the entire collection in the worst case scenario.
+  Therefore O(n) is the answer.
+
+
+3) What's the Big-O of the following algorithm? Submit your work and reasoning
+  with your solution.
+
+  def find_largest(collection)
+   largest = collection[0][0]
+   collection.length.times do |i|
+    puts 'outside'
+     subcollection = collection[i]
+     subcollection.length.times do |i|
+     puts 'inside'
+       if subcollection[i] >= largest
+         largest = subcollection[i]
+       end
+     end
+   end
+   largest
+  end
+
+  ***This is definitely more complex. Collection is a two dimensional array
+  and the goal is to find the largest amount in the subcollection. But if we
+  look at the actual output,  in order for us to find the largest element we
+  still need to move through all the elements in the array. Despite the format
+  of the 2 dimension, the overall big O of this program is linear O(n).
+
+
+4) What's the Big-O of the following algorithm? Submit your work and reasoning with your solution.
+
+  def numbers(n)
+   puts "inside"
+   if (n == 0)
+     return 0
+   elsif (n == 1)
+     return 1
+   else
+     return numbers(n-1) + numbers(n-2)
+   end
+  end
+
+  By conducting a simple test, we can see essentially that as the number increases
+  the number of iterations increase also. We also know that recursive behaviors are
+  particularly hard on efficiency in general.
+  Number Iterations
+    0       1
+    1       1
+    2       3
+    3       6
+    4       9
+    5       15
+    6       25
+  ***You can begin to see from this simple test that the relationship appears to be
+  exponential. Therefore Big-O notation is O(2^n).
+
+
+5) What's the Big-O of the following algorithm? Submit your work and reasoning with your solution.
+
+  def iterative(n)
+   num1 = 0
+   num2 = 1
+   i = 0
+   while i < n-1
+    puts "inside #{i}"
+     tmp = num1 + num2
+     num1 = num2
+     num2 = tmp
+     i+=1
+   end
+   num2
+  end
+
+  ***The big-O of this algorithm is O(n). The number of iterations is determined by the size of n.
+  As n grows the number of iterations grow by the same rate.
+
+
+
+6) What's the Big-O of the following algorithm? Submit your work and reasoning with your solution.
+
+  def sort(collection, from=0, to=nil)
+   if to == nil
+     # Sort the whole collection, by default
+     to = collection.count - 1
+   end
+   if from >= to
+     # Done sorting
+     return
+   end
+
+   # Take a pivot value, at the far left
+   pivot = collection[from]
+
+   # Min and Max pointers
+   min = from
+   max = to
+
+   # Current free slot
+   free = min
+   puts "outside"
+   while min < max
+    puts "inside"
+     if free == min # Evaluate collection[max]
+       if collection[max] <= pivot # Smaller than pivot, must move
+         collection[free] = collection[max]
+         min += 1
+         free = max
+       else
+         max -= 1
+       end
+     elsif free == max # Evaluate collection[min]
+       if collection[min] >= pivot # Bigger than pivot, must move
+         collection[free] = collection[min]
+         max -= 1
+         free = min
+       else
+         min += 1
+       end
+     else
+       raise "Inconsistent state"
+     end
+   end
+   collection[free] = pivot
+   sort collection, from, free - 1
+   sort collection, free + 1, to
+   collection
+  end
+
+  ***By a first glance at the algorithm we can see that most of the first part of the
+  algorithm has a complexity of O(1). They are just constant operations. However,
+  it is when we get into the while loop that essentially, in the worst case, compares
+  every element in the array to the min, max and pivot point. Gives us a complexity of
+  O(n). Where it gets tricky is, further down where sort is called two more times on
+  the same algorithm. This time, it is from the pivot point before and after.
+
+  The Big-O of this algorithm is O(n)*O(n) which is essentially O(n^2).
