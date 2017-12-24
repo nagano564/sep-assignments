@@ -1,0 +1,25 @@
+Find the Big-O of each version?
+
+  What is the Big-O of version one?
+    Version one was only about improving code complexities. The big-O or worst case
+    is calculated based on the most lengthy of procedures.
+
+    The meat of the process is in the loop that goes through the entire array
+    O(n) elements and additionally, the resorting with the internal loop is also O(n).
+    Therefore version one's big O is O(n^2)
+
+
+  What is the Big-O of version two?
+    Determining the Big-O of version two is a little easier since we changed the
+    sorting algorithm to a merge sort where we already know the Big-O.
+
+    The big-O of this version is: O(n log n)
+
+  What is the Big-O of version three?
+    This version of the ruby program was designed to deal with and improve space
+    complexity. In the context we are looking at reserving memory and any operations
+    we do, we want to do them in-place without creating temporary variables or more
+    arrays. For that reason, we used a bubble sort algorithm. Bubble sort has good
+    efficiency as well as the operations are in place.
+
+    The big-O for this version is: O(1) for space complexity and O(n^2) for time complexity.
