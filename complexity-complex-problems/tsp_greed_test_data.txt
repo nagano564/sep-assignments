@@ -1,0 +1,13 @@
+require_relative 'tsp_greed'
+
+c1 = City.new("Los Angeles")
+c2 = City.new("Seattle")
+c3 = City.new("Florida")
+c1.neighbors = [Neighbor.new("Seattle", 25), Neighbor.new("Florida", 30)]
+c2.neighbors = [Neighbor.new("Los Angeles", 25), Neighbor.new("Florida", 50)]
+c3.neighbors = [Neighbor.new("Seattle", 100), Neighbor.new("Los Angeles", 30)]
+
+city_graph = [c1,c2,c3]
+
+
+nearest_possible_neighbor(city_graph, c1)
