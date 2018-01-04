@@ -11,11 +11,11 @@ class City
 end
 
 class Neighbor
-  attr_accessor :name
+  attr_accessor :city
   attr_accessor :distance
 
-  def initialize(name, distance)
-    @name = name
+  def initialize(city, distance)
+    @city = city
     @distance = distance
   end
 end
