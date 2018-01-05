@@ -3,11 +3,10 @@ require_relative 'tsp_greed'
 c1 = City.new("Los Angeles")
 c2 = City.new("Seattle")
 c3 = City.new("Florida")
-c1.neighbors = [Neighbor.new(c2, 25), Neighbor.new(c3, 15)]
-c2.neighbors = [Neighbor.new(c1, 25), Neighbor.new(c3, 50)]
-c3.neighbors = [Neighbor.new(c2, 100), Neighbor.new(c1, 30)]
-
-
-
+c4 = City.new("New York")
+c1.neighbors = [Neighbor.new(c2, 25), Neighbor.new(c3, 40)]
+c2.neighbors = [Neighbor.new(c4, 35), Neighbor.new(c3, 60)]
+c3.neighbors = [Neighbor.new(c2, 60), Neighbor.new(c1, 40)]
+c4.neighbors = [Neighbor.new(c3,30), Neighbor.new(c1,50)]
 
 nearest_possible_neighbor(c1)
